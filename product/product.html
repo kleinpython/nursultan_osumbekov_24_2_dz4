@@ -1,0 +1,25 @@
+{% extends 'layouts/index.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'product.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="product">
+            {% for product in product %}
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                     {% if product.image %}
+                        <img class="product_image" src="/media/{{ product.image }}" alt="">
+                     {% else %}
+                        <img class="product_image" src="https://64.media.tumblr.com/eb8013a5fded5dcb55eee5ba2e48c86c/012efcaf904bfd8e-89/s540x810/b10ce92c5adc0d14b780f0c7177f734380d21198.pnj" alt="">
+                     {% endif %}
+                    <h5 class="card-title">Product.title</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ product.rate }}</h6>
+                    <a href="/product/{{ product.id }}" class="card-link">more</a>
+                </div>
+                </div>
+            {% endfor %}
+    </div>
+{% endblock %}
